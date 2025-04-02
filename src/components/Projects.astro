@@ -9,6 +9,7 @@ import LinkButton from "./LinkButton.astro";
 import Prisma from "./icons/Prisma.astro";
 import Svelte from "./icons/Svelte.astro";
 import Typescript from "./icons/Typescript.astro";
+import Clerk from "./icons/Clerk.astro";
 
 const TAGS = {
   NEXT: {
@@ -41,12 +42,17 @@ const TAGS = {
     class: "bg-[#0f0f0f] text-white",
     icon: Typescript,
   },
+  CLERK: {
+    name: "Clerk",
+    class: "bg-[#0f0f0f] text-white",
+    icon: Clerk,
+  },
 };
 const PROJECTS = [
   {
-    title: "5LC - Oficial site of Pro-wrestling in Chile",
+    title: "5LC - Ecommerce site of Pro-wrestling in Chile",
     description:
-      "Ecommerce and ticketing platform. Developed with Sveltekit, Tailwind CSS, Prisma and Supabase. It includes a integretion with CMS SanityIO for managing events, tickets, and users.",
+      "Ecommerce and ticketing platform. Increased sales, minimized costs and managed every step of the users experience.",
     link: "https://5luchas.cl/",
     github: "https://github.com/kbzaso/5lc-website",
     image: "/projects/5lc.webp",
@@ -54,18 +60,18 @@ const PROJECTS = [
       TAGS.SVELTE,
       TAGS.TYPESCRIPT,
       TAGS.TAILWIND,
-      TAGS.PRISMA,
       TAGS.SUPABASE,
+      TAGS.PRISMA,
     ],
   },
-  // {
-  //   title: "AdventJS - Retos de programación con JavaScript y TypeScript",
-  //   description:
-  //     "Plataforma gratuita con retos de programación. Más de 1 millón de visitas en un mes. +50K retos completados. Creada desde cero con Next.js, React y Tailwind CSS.",
-  //   link: "https://adventjs.dev",
-  //   image: "/projects/adventjs.webp",
-  //   tags: [TAGS.NEXT, TAGS.TAILWIND],
-  // },
+  {
+    title: "Ticket Validator and payment control system",
+    description:
+      "Real-time ticket validator and payment control system for events. It allows to validate tickets and control payments in real-time.",
+    github: "https://github.com/kbzaso/admin-5lc",
+    image: "/projects/admin.webp",
+    tags: [TAGS.SVELTE, TAGS.TYPESCRIPT, TAGS.TAILWIND, TAGS.SUPABASE, TAGS.PRISMA, TAGS.CLERK],
+  },
 ];
 ---
 
