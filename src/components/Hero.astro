@@ -3,6 +3,7 @@ import Badge from "@/components/Badge.astro";
 import LinkedInIcon from "@/components/icons/LinkedIn.astro";
 import MailIcon from "@/components/icons/Mail.astro";
 import SocialPill from "@/components/SocialPill.astro";
+import DocumentPill from "@/components/DocumentPill.astro";
 ---
 
 <div class="max-w-xl">
@@ -43,6 +44,10 @@ import SocialPill from "@/components/SocialPill.astro";
     brand strategy, and motion graphics.
   </p>
   <nav class="flex flex-wrap gap-4 mt-8">
+    <SocialPill href="https://drive.google.com/file/d/1bm3pG2yZESpZzLl2T7udkcU2aNUdSwzR/view?usp=sharing">
+      <DocumentPill class="size-4" />
+      CV
+    </SocialPill>
     <SocialPill href="mailto:alejandro.sapa@gmail.com">
       <MailIcon class="size-4" />
       Contáctame
