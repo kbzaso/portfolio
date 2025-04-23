@@ -10,6 +10,8 @@ import Prisma from "./icons/Prisma.astro";
 import Svelte from "./icons/Svelte.astro";
 import Typescript from "./icons/Typescript.astro";
 import Clerk from "./icons/Clerk.astro";
+import Resend from "./icons/Resend.astro";
+import DaisyUI from "./icons/DaisyUI.astro";
 
 const TAGS = {
   NEXT: {
@@ -47,6 +49,16 @@ const TAGS = {
     class: "bg-[#0f0f0f] text-white",
     icon: Clerk,
   },
+  RESEND: {
+    name: "Resend",
+    class: "bg-[#0f0f0f] text-white",
+    icon: Resend,
+  },
+  DAISYUI: {
+    name: "DaisyUI",
+    class: "bg-[#0f0f0f] text-white",
+    icon: DaisyUI,
+  },
 };
 const PROJECTS = [
   {
@@ -62,6 +74,7 @@ const PROJECTS = [
       TAGS.TAILWIND,
       TAGS.SUPABASE,
       TAGS.PRISMA,
+      TAGS.RESEND,
     ],
   },
   {
@@ -70,7 +83,16 @@ const PROJECTS = [
       "Real-time ticket validator and payment control system for events. It allows to validate tickets and control payments in real-time.",
     github: "https://github.com/kbzaso/admin-5lc",
     image: "/projects/admin.webp",
-    tags: [TAGS.SVELTE, TAGS.TYPESCRIPT, TAGS.TAILWIND, TAGS.SUPABASE, TAGS.PRISMA, TAGS.CLERK],
+    tags: [TAGS.SVELTE, TAGS.TYPESCRIPT, TAGS.TAILWIND, TAGS.SUPABASE, TAGS.PRISMA, TAGS.CLERK, TAGS.DAISYUI],
+  },
+  {
+    title: "Bóveda Secreta Landing page",
+    description:
+      "Training center for wrestlers. It allows to book classes, look all the services offered and see the trainers.",
+    link: "https://www.bovedasecreta.cl/",
+    github: "https://github.com/kbzaso/boveda-app",
+    image: "/projects/boveda.webp",
+    tags: [TAGS.SVELTE, TAGS.TYPESCRIPT, TAGS.TAILWIND, TAGS.DAISYUI],
   },
 ];
 ---
