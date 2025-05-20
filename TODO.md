@@ -2,12 +2,13 @@
 
 ### Todo
 
-- [ ] Improve README of Github Projects
+- [ ] Add vivipalominos.com
+- [ ] ADD: vge.cl
+- [ ] Add case study for some proyects
+- [ ] ADD: Profile of github
+- [ ] ADD: Behance
 
 ### In Progress
 
-- [ ] Work on Github Repo [JIRA-345]  
 
 ### Done ✓
-
-- [x] Create my first TODO.md  
