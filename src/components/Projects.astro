@@ -12,6 +12,10 @@ import Typescript from "./icons/Typescript.astro";
 import Clerk from "./icons/Clerk.astro";
 import Resend from "./icons/Resend.astro";
 import DaisyUI from "./icons/DaisyUI.astro";
+import AstroIcon from "./icons/AstroIcon.astro";
+import Javascript from "./icons/JavascriptIcon.astro";
+import Html from "./icons/HtmlIcon.astro";
+import CSS from "./icons/Css.astro";
 
 const TAGS = {
   NEXT: {
@@ -59,8 +63,42 @@ const TAGS = {
     class: "bg-[#0f0f0f] text-white",
     icon: DaisyUI,
   },
+  ASTRO: {
+    name: "Astro",
+    class: "bg-[#0f0f0f] text-white",
+    icon: AstroIcon,
+  },
+  JAVASCRIPT: {
+    name: "Javascript",
+    class: "bg-[#0f0f0f] text-white",
+    icon: Javascript,
+  },
+  HTML: {
+    name: "HTML",
+    class: "bg-[#0f0f0f] text-white",
+    icon: Html,
+  },
+  CSS: {
+    name: "CSS",
+    class: "bg-[#0f0f0f] text-white",
+    icon: CSS,
+  },
 };
 const PROJECTS = [
+  {
+    title: "Viviana Palominos - Travel Agent",
+    description:
+      "Landing page for Viviana Palominos, it allow to contact her and see the services offered.",
+    link: "https://vivipalominos.com/",
+    github: "https://github.com/kbzaso/vivi-palominos",
+    image: "/projects/vivi.webp",
+    tags: [
+      TAGS.ASTRO,
+      TAGS.TYPESCRIPT,
+      TAGS.TAILWIND,
+      TAGS.RESEND,
+    ],
+  },
   {
     title: "5LC - Ecommerce site of Pro-wrestling in Chile",
     description:
@@ -93,6 +131,17 @@ const PROJECTS = [
     github: "https://github.com/kbzaso/boveda-app",
     image: "/projects/boveda.webp",
     tags: [TAGS.SVELTE, TAGS.TYPESCRIPT, TAGS.TAILWIND, TAGS.DAISYUI],
+  },
+  {
+    title: "VGE - Civil Engineering and Architecture",
+    description:
+      "Landing page for VGE, a civil engineering and architecture company. It allows to contact them and see the services offered.",
+    link: "https://vge.cl/",
+    github: "https://github.com/kbzaso/VGE",
+    image: "/projects/vge.webp",
+    tags: [
+      TAGS.JAVASCRIPT, TAGS.HTML, TAGS.CSS,
+    ],
   },
 ];
 ---

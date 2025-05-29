@@ -2,13 +2,13 @@
 
 ### Todo
 
-- [ ] Add vivipalominos.com
-- [ ] ADD: vge.cl
 - [ ] Add case study for some proyects
-- [ ] ADD: Profile of github
 - [ ] ADD: Behance
+- [ ] ADD: Readme to each project on Github
 
 ### In Progress
 
 
 ### Done ✓
+- [x] ADD: vge.cl
+- [x] Add vivipalominos.com
