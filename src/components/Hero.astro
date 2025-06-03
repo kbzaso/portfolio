@@ -6,6 +6,38 @@ import SocialPill from "@/components/SocialPill.astro";
 import DocumentPill from "@/components/DocumentPill.astro";
 ---
 
+<script>
+  let copied = false;
+
+  const btn = document.getElementById("email-link");
+
+  btn?.addEventListener("click", handleCopyEmail);
+
+  function handleCopyEmail(e: MouseEvent) {
+    const target = e.currentTarget as HTMLElement | null;
+    const email = target?.getAttribute("data-value");
+    if (!email) return;
+    navigator.clipboard.writeText(email).then(() => {
+      if (target) {
+        target.innerText = "Copied!";
+      }
+      setTimeout(() => {
+        if (target) {
+          target.innerText = "Email";
+        }
+      }, 2000);
+      copied = true;
+      setTimeout(() => {
+        copied = false;
+        // Trigger re-render
+        document.dispatchEvent(new Event("astro:reload"));
+      }, 2000);
+      // Trigger re-render
+      document.dispatchEvent(new Event("astro:reload"));
+    });
+  }
+</script>
+
 <div class="max-w-xl">
   <div class="flex gap-4 mb-4">
     <svg
@@ -34,8 +66,7 @@ import DocumentPill from "@/components/DocumentPill.astro";
   <p
     class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
   >
-    +6 years of experience. <strong>UX Engineer</strong> from
-    Santiago, Chile 🇨🇱.
+    +6 years of experience. <strong>UX Engineer</strong> from Santiago, Chile 🇨🇱.
 
     <br />
     <br />
@@ -44,14 +75,21 @@ import DocumentPill from "@/components/DocumentPill.astro";
     brand strategy, and motion graphics.
   </p>
   <nav class="flex flex-wrap gap-4 mt-8">
-    <SocialPill href="https://drive.google.com/file/d/1bm3pG2yZESpZzLl2T7udkcU2aNUdSwzR/view?usp=sharing">
+    <SocialPill
+      href="https://drive.google.com/file/d/1bm3pG2yZESpZzLl2T7udkcU2aNUdSwzR/view?usp=sharing"
+    >
       <DocumentPill class="size-4" />
       CV
     </SocialPill>
-    <SocialPill href="mailto:alejandro.sapa@gmail.com">
+    <a
+      id="email-link"
+      data-value="alejandro.sapa@gmail.com"
+      rel="noopener noreferrer"
+      class="inline-flex items-center justify-center gap-2 px-4 py-1 text-gray-800 transition bg-gray-100 border border-gray-300 rounded-full dark:bg-gray-800 dark:border-gray-600 dark:text-white focus-visible:ring-yellow-500/80 text-md hover:bg-gray-900 hover:border-gray-700 hover:text-white dark:hover:bg-gray-100 dark:hover:border-gray-300 dark:hover:text-black group max-w-fit focus:outline-none focus-visible:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-offset-2 active:bg-black cursor-pointer"
+    >
       <MailIcon class="size-4" />
-      Contáctame
-    </SocialPill>
+      Email
+    </a>
     <SocialPill href="https://www.linkedin.com/in/alejandrosapa/">
       <LinkedInIcon class="size-4" />
       LinkedIn
