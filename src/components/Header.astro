@@ -53,7 +53,7 @@ const isHome = currentPath === "/";
 >
   <nav
     aria-label="Main"
-    class="relative z-20 flex items-center justify-center rounded-full px-3 text-sm font-medium text-gray-600 dark:text-gray-200 backdrop-blur-sm shadow-xl"
+    class="relative z-20 flex items-center justify-center rounded-full px-3 text-sm font-medium text-gray-600 shadow-xl backdrop-blur-sm dark:text-gray-200"
   >
     {
       navItems.map((link) => (
@@ -78,7 +78,7 @@ const isHome = currentPath === "/";
     isHome && (
       <nav
         aria-label="Home sections"
-        class="flex items-center justify-center rounded-full px-3 text-xs font-medium text-gray-500 dark:text-gray-400 shadow-xl"
+        class="flex items-center justify-center rounded-full px-3 text-xs font-medium text-gray-500 shadow-xl dark:text-gray-400"
       >
         {homeSections.map((link) => (
           <a
