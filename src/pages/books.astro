@@ -1,0 +1,29 @@
+---
+import Layout from "@/layouts/Layout.astro"
+
+import BooksList from "@/components/Books.astro"
+import BookIcon from "@/components/icons/Book.astro"
+import SectionContainer from "@/components/SectionContainer.astro"
+import TitleSection from "@/components/TitleSection.astro"
+import SectionDescription from "@/components/SectionDescription.astro"
+---
+
+<Layout
+  title="Books I recommend - Alejandro"
+  description="Books I've read and loved, with a note on why each one is worth your time."
+>
+  <main id="main-content" class="px-4">
+    <SectionContainer id="books" class="py-24 md:py-36">
+      <TitleSection>
+        <BookIcon class="size-8" />
+        Books I recommend
+      </TitleSection>
+      <SectionDescription>
+        Books I've read and loved, with a note on why each one is worth your time. 
+        <br/><br/>
+        Some are in English, some in Spanish, but all of them have been meaningful to me.
+      </SectionDescription>
+      <BooksList />
+    </SectionContainer>
+  </main>
+</Layout>
