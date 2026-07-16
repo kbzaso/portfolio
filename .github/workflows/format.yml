@@ -12,15 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Clone the repo at the triggering commit
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # Install pnpm itself (must run before setup-node's pnpm cache step)
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
         with:
           version: 10 # keep in sync with the pnpm version used locally
 
       # Install Node and enable pnpm store caching between runs
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc # use the same Node version as local dev
           cache: pnpm

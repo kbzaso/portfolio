@@ -1,27 +1,53 @@
-# 👨🏻‍💻 Porfolio para programadores y desarrolladores
+# saez.me
 
-<div align="center">
-<a href="https://porfolio.dev/">
-<img src="./public/porfolio.webp">
-</a>
-<p></p>
-</div>
+Personal journal for Alejandro Sáez, live at [saez.me](https://saez.me/).
 
-<div align="center">
+Built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/), deployed on [Vercel](https://vercel.com/) as a static site.
 
-![Astro Badge](https://img.shields.io/badge/Astro-FF3E00?logo=astro&logoColor=fff&style=flat)
-![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=fff&style=flat)
-![GitHub stars](https://img.shields.io/github/stars/midudev/porfolio.dev)
-![GitHub PRs](https://img.shields.io/github/issues-pr/midudev/porfolio.dev)
-![GitHub forks](https://img.shields.io/github/forks/midudev/porfolio.dev)
-![GitHub issues](https://img.shields.io/github/issues/midudev/porfolio.dev)
+## Pages
 
-</div>
+- `/` — home: hero, experience, projects, about me
+- `/quotes` — a collection of quotes
+- `/books` — books read/recommended
+- `/components` — component showcase
 
-## 🫂 Contribuidores
+## Stack
 
-<a href="https://github.com/midudev/porfolio.dev/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=midudev/porfolio.dev" />
-</a>
+- **Astro** — static site generation
+- **Tailwind CSS v4** — styling, wired in via `@tailwindcss/vite` (no `tailwind.config.js` — theme lives in `src/styles/global.css`)
+- **TypeScript**
+- **astro-robots-txt** — generates `robots.txt` at build time
 
-<p></p>
+## Getting started
+
+Requires Node ≥22.12 (see `.nvmrc`) and [pnpm](https://pnpm.io/).
+
+```bash
+pnpm install
+pnpm dev       # start the dev server
+```
+
+## Scripts
+
+| Script              | What it does                                         |
+| ------------------- | ---------------------------------------------------- |
+| `pnpm dev`          | Start the local dev server                           |
+| `pnpm build`        | Type-check (`astro check`) then build for production |
+| `pnpm preview`      | Preview the production build locally                 |
+| `pnpm format`       | Format the codebase with Prettier                    |
+| `pnpm format:check` | Check formatting without writing (used in CI)        |
+
+## CI
+
+`.github/workflows/format.yml` checks formatting on every push to `main` and on all pull requests.
+
+## Project structure
+
+```
+src/
+  components/   Astro components, including icons/
+  layouts/      Page layouts (Layout.astro is the one actually used by pages)
+  pages/        Route files
+  styles/       global.css — Tailwind entry point + global CSS
+public/         Static assets served as-is
+```
