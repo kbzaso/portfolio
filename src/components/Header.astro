@@ -1,39 +1,70 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro"
+import Briefcase from "./icons/Briefcase.astro"
+import CodeIcon from "./icons/Code.astro"
+import ProfileCheck from "./icons/ProfileCheck.astro"
+import QuoteIcon from "./icons/Quote.astro"
+import BookIcon from "./icons/Book.astro"
 
 const navItems = [
   {
     title: "Experience",
     label: "experience",
     url: "/#experience",
+    icon: Briefcase,
   },
   {
     title: "Projects",
     label: "projects",
     url: "/#projects",
+    icon: CodeIcon,
   },
   {
     title: "About me",
     label: "about-me",
     url: "/#about-me",
+    icon: ProfileCheck,
+  },
+  {
+    title: "Quotes",
+    label: "quotes",
+    url: "/quotes",
+    icon: QuoteIcon,
+  },
+  {
+    title: "Books",
+    label: "books",
+    url: "/books",
+    icon: BookIcon,
   },
 ]
+
+const normalizePath = (path: string) => path.replace(/\/+$/, "") || "/"
+const currentPath = normalizePath(Astro.url.pathname)
 ---
 
 <header
   class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
 >
   <nav
+    aria-label="Main"
     class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
   >
     {
       navItems.map((link) => (
         <a
-          class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500"
-          aria-label={link.label}
+          class="relative block px-2.5 py-2 rounded-full transition hover:text-blue-600 dark:hover:text-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:focus-visible:outline-blue-400 md:px-2"
+          data-label={link.label}
+          title={link.title}
           href={link.url}
+          aria-current={
+            !link.url.startsWith("/#") && normalizePath(link.url) === currentPath
+              ? "page"
+              : undefined
+          }
         >
-          {link.title}
+          <link.icon class="size-5 md:hidden" aria-hidden="true" />
+          <span class="sr-only md:not-sr-only">{link.title}</span>
         </a>
       ))
     }
@@ -50,10 +81,14 @@ const navItems = [
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           navItems.forEach((item) => {
-            if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("text-blue-500")
+            if (item.getAttribute("data-label") == entry.target.id) {
+              item.classList.add("text-blue-600", "dark:text-blue-400")
+              item.setAttribute("aria-current", "true")
             } else {
-              item.classList.remove("text-blue-500")
+              item.classList.remove("text-blue-600", "dark:text-blue-400")
+              if (item.getAttribute("aria-current") !== "page") {
+                item.removeAttribute("aria-current")
+              }
             }
           })
         }
