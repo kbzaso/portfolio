@@ -1,29 +1,15 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro"
-import Briefcase from "./icons/Briefcase.astro"
-import CodeIcon from "./icons/Code.astro"
-import ProfileCheck from "./icons/ProfileCheck.astro"
+import HomeIcon from "./icons/Home.astro"
 import QuoteIcon from "./icons/Quote.astro"
 import BookIcon from "./icons/Book.astro"
 
 const navItems = [
   {
-    title: "Experience",
-    label: "experience",
-    url: "/#experience",
-    icon: Briefcase,
-  },
-  {
-    title: "Projects",
-    label: "projects",
-    url: "/#projects",
-    icon: CodeIcon,
-  },
-  {
-    title: "About me",
-    label: "about-me",
-    url: "/#about-me",
-    icon: ProfileCheck,
+    title: "Home",
+    label: "home",
+    url: "/",
+    icon: HomeIcon,
   },
   {
     title: "Quotes",
@@ -39,16 +25,35 @@ const navItems = [
   },
 ]
 
+const homeSections = [
+  {
+    title: "Experience",
+    label: "experience",
+    url: "/#experience",
+  },
+  {
+    title: "Projects",
+    label: "projects",
+    url: "/#projects",
+  },
+  {
+    title: "About me",
+    label: "about-me",
+    url: "/#about-me",
+  },
+]
+
 const normalizePath = (path: string) => path.replace(/\/+$/, "") || "/"
 const currentPath = normalizePath(Astro.url.pathname)
+const isHome = currentPath === "/"
 ---
 
 <header
-  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
+  class="fixed top-0 z-10 flex flex-col items-center w-full mx-auto mt-2 gap-1"
 >
   <nav
     aria-label="Main"
-    class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
+    class="relative z-20 flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
   >
     {
       navItems.map((link) => (
@@ -58,9 +63,7 @@ const currentPath = normalizePath(Astro.url.pathname)
           title={link.title}
           href={link.url}
           aria-current={
-            !link.url.startsWith("/#") && normalizePath(link.url) === currentPath
-              ? "page"
-              : undefined
+            normalizePath(link.url) === currentPath ? "page" : undefined
           }
         >
           <link.icon class="size-5 md:hidden" aria-hidden="true" />
@@ -70,6 +73,25 @@ const currentPath = normalizePath(Astro.url.pathname)
     }
     <ThemeToggle />
   </nav>
+
+  {
+    isHome && (
+      <nav
+        aria-label="Home sections"
+        class="flex px-3 text-xs font-medium rounded-full text-gray-500 dark:text-gray-400 justify-center items-center"
+      >
+        {homeSections.map((link) => (
+          <a
+            class="relative block px-2.5 py-1.5 rounded-full transition hover:text-blue-600 dark:hover:text-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:focus-visible:outline-blue-400"
+            data-label={link.label}
+            href={link.url}
+          >
+            {link.title}
+          </a>
+        ))}
+      </nav>
+    )
+  }
 </header>
 
 <script>
