@@ -4,6 +4,7 @@ import LinkedInIcon from "@/components/icons/LinkedIn.astro";
 import MailIcon from "@/components/icons/Mail.astro";
 import SocialPill from "@/components/SocialPill.astro";
 import DocumentPill from "@/components/DocumentPill.astro";
+import BehanceIcon from "@/components/icons/BehanceIcon.astro";
 ---
 
 <script>
@@ -39,7 +40,7 @@ import DocumentPill from "@/components/DocumentPill.astro";
 </script>
 
 <div class="max-w-xl">
-  <div class="flex gap-4 mb-4">
+  <div class="reveal flex gap-4 mb-4" style="--delay: 0ms">
     <svg
       class="h-16 light:fill-white dark:fill-yellow-500"
       viewBox="0 0 661 868"
@@ -59,12 +60,14 @@ import DocumentPill from "@/components/DocumentPill.astro";
     </a> -->
   </div>
   <h1
-    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
+    class="reveal text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
+    style="--delay: 150ms"
   >
     Hi, I'm Alejandro
   </h1>
   <p
-    class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
+    class="reveal mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
+    style="--delay: 300ms"
   >
     Just a creative person from Santiago, Chile 🇨🇱.
 
@@ -74,25 +77,54 @@ import DocumentPill from "@/components/DocumentPill.astro";
     also user-friendly and efficient. Also, I'm passionate about brand identity,
     brand strategy, and motion graphics.
   </p>
-  <nav class="flex flex-wrap gap-4 mt-8">
+  <nav class="reveal flex flex-wrap gap-4 mt-8" style="--delay: 450ms">
     <SocialPill
       href="https://drive.google.com/file/d/1bm3pG2yZESpZzLl2T7udkcU2aNUdSwzR/view?usp=sharing"
     >
       <DocumentPill class="size-4" />
       CV
     </SocialPill>
-    <a
+    <button
       id="email-link"
       data-value="alejandro.sapa@gmail.com"
-      rel="noopener noreferrer"
       class="inline-flex items-center justify-center gap-2 px-4 py-1 text-gray-800 transition bg-gray-100 border border-gray-300 rounded-full dark:bg-gray-800 dark:border-gray-600 dark:text-white focus-visible:ring-yellow-500/80 text-md hover:bg-gray-900 hover:border-gray-700 hover:text-white dark:hover:bg-gray-100 dark:hover:border-gray-300 dark:hover:text-black group max-w-fit focus:outline-none focus-visible:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-offset-2 active:bg-black cursor-pointer"
     >
       <MailIcon class="size-4" />
       Email
-    </a>
+    </button>
     <SocialPill href="https://www.linkedin.com/in/alejandrosapa/">
       <LinkedInIcon class="size-4" />
       LinkedIn
     </SocialPill>
+    <SocialPill href="https://www.behance.net/kbzaso">
+      <BehanceIcon class="size-4" />
+      Behance
+    </SocialPill>
   </nav>
 </div>
+
+<style>
+  @keyframes hero-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+      filter: blur(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  .reveal {
+    animation: hero-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--delay, 0ms);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      animation: none;
+    }
+  }
+</style>
