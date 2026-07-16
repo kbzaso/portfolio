@@ -9,7 +9,7 @@
 
 ### In Progress
 
-
 ### Done ✓
+
 - [x] ADD: vge.cl
 - [x] Add vivipalominos.com

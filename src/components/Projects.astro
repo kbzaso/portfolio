@@ -92,12 +92,7 @@ const PROJECTS = [
     link: "https://vivipalominos.com/",
     github: "https://github.com/kbzaso/vivi-palominos",
     image: "/projects/vivi.webp",
-    tags: [
-      TAGS.ASTRO,
-      TAGS.TYPESCRIPT,
-      TAGS.TAILWIND,
-      TAGS.RESEND,
-    ],
+    tags: [TAGS.ASTRO, TAGS.TYPESCRIPT, TAGS.TAILWIND, TAGS.RESEND],
   },
   {
     title: "5LC - Ecommerce site of Pro-wrestling in Chile",
@@ -121,7 +116,15 @@ const PROJECTS = [
       "Real-time ticket validator and payment control system for events. It allows to validate tickets and control payments in real-time.",
     github: "https://github.com/kbzaso/admin-5lc",
     image: "/projects/admin.webp",
-    tags: [TAGS.SVELTE, TAGS.TYPESCRIPT, TAGS.TAILWIND, TAGS.SUPABASE, TAGS.PRISMA, TAGS.CLERK, TAGS.DAISYUI],
+    tags: [
+      TAGS.SVELTE,
+      TAGS.TYPESCRIPT,
+      TAGS.TAILWIND,
+      TAGS.SUPABASE,
+      TAGS.PRISMA,
+      TAGS.CLERK,
+      TAGS.DAISYUI,
+    ],
   },
   {
     title: "Bóveda Secreta Landing page",
@@ -139,9 +142,7 @@ const PROJECTS = [
     link: "https://vge.cl/",
     github: "https://github.com/kbzaso/VGE",
     image: "/projects/vge.webp",
-    tags: [
-      TAGS.JAVASCRIPT, TAGS.HTML, TAGS.CSS,
-    ],
+    tags: [TAGS.JAVASCRIPT, TAGS.HTML, TAGS.CSS],
   },
 ];
 ---
@@ -149,14 +150,14 @@ const PROJECTS = [
 <div class="flex flex-col gap-y-16">
   {
     PROJECTS.map(({ image, title, description, tags, link, github }) => (
-      <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+      <article class="group flex flex-col space-y-8 space-x-0 md:flex-row md:space-y-0 md:space-x-8">
         <div class="w-full md:w-1/2">
-          <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+          <div class="relative col-span-6 row-span-5 flex transform flex-col items-center gap-8 overflow-clip rounded-xl shadow-xl transition duration-500 ease-in-out sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
             <Image
               src={image}
               alt="Mockup of the project"
               loading="eager"
-              class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+              class="h-56 w-full object-cover object-top transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
               style="object-position: 50% 50%"
               decoding="async"
               fetchpriority="low"
@@ -170,12 +171,12 @@ const PROJECTS = [
           <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
             {title}
           </h3>
-          <div class="flex flex-wrap mt-2">
-            <ul class="flex flex-row mb-2 gap-2 flex-wrap">
+          <div class="mt-2 flex flex-wrap">
+            <ul class="mb-2 flex flex-row flex-wrap gap-2">
               {tags.map((tag) => (
                 <li>
                   <span
-                    class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+                    class={`flex gap-x-2 rounded-full text-xs ${tag.class} px-2 py-1`}
                   >
                     <tag.icon class="size-4" />
                     {tag.name}
@@ -187,7 +188,7 @@ const PROJECTS = [
             <div class="mt-2 text-gray-700 dark:text-gray-400">
               {description}
             </div>
-            <footer class="flex items-end justify-start mt-4 gap-x-4">
+            <footer class="mt-4 flex items-end justify-start gap-x-4">
               {github && (
                 <LinkButton href={github}>
                   <GitHub class="size-6" />

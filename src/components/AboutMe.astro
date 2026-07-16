@@ -1,13 +1,13 @@
 ---
 const personalImageAlt = "Manuel Alejandro Sáez Palominos";
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 ---
 
 <article
-  class="flex flex-col items-center justify-center gap-8 text-gray-700 dark:text-gray-300 md:flex-row"
+  class="flex flex-col items-center justify-center gap-8 text-gray-700 md:flex-row dark:text-gray-300"
 >
   <div
-    class="[&>p]:mb-4 [&>p>strong]:text-yellow-500 dark:[&>p>strong]:text-yellow-100 [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1"
+    class="order-2 text-pretty md:order-1 [&>p]:mb-4 [&>p>strong]:font-mono [&>p>strong]:font-normal [&>p>strong]:text-yellow-500 dark:[&>p>strong]:text-yellow-100"
   >
     <p>
       My name is Manuel Alejandro, but my friends call me Jano. a former
@@ -40,12 +40,12 @@ import { Image } from 'astro:assets';
     src="/jano.webp"
     alt={personalImageAlt}
     loading="lazy"
-    class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-black/20 dark:bg-yellow-500/5 ring-1 ring-black/70 dark:ring-white/20"
+    class="order-1 aspect-square h-full w-64 rotate-3 rounded-2xl bg-black/20 object-cover p-1 ring-1 ring-black/70 md:order-2 lg:w-64 lg:p-2 dark:bg-yellow-500/5 dark:ring-white/20"
     style="object-position: 50% 50%"
     decoding="async"
     width={200}
     height={200}
     fetchpriority="low"
     sizes="(max-width: 200px) 100vw, 200px"
-    />
+  />
 </article>

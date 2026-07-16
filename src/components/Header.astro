@@ -1,8 +1,8 @@
 ---
-import ThemeToggle from "./ThemeToggle.astro"
-import HomeIcon from "./icons/Home.astro"
-import QuoteIcon from "./icons/Quote.astro"
-import BookIcon from "./icons/Book.astro"
+import ThemeToggle from "./ThemeToggle.astro";
+import HomeIcon from "./icons/Home.astro";
+import QuoteIcon from "./icons/Quote.astro";
+import BookIcon from "./icons/Book.astro";
 
 const navItems = [
   {
@@ -23,7 +23,7 @@ const navItems = [
     url: "/books",
     icon: BookIcon,
   },
-]
+];
 
 const homeSections = [
   {
@@ -41,24 +41,24 @@ const homeSections = [
     label: "about-me",
     url: "/#about-me",
   },
-]
+];
 
-const normalizePath = (path: string) => path.replace(/\/+$/, "") || "/"
-const currentPath = normalizePath(Astro.url.pathname)
-const isHome = currentPath === "/"
+const normalizePath = (path: string) => path.replace(/\/+$/, "") || "/";
+const currentPath = normalizePath(Astro.url.pathname);
+const isHome = currentPath === "/";
 ---
 
 <header
-  class="fixed top-0 z-10 flex flex-col items-center w-full mx-auto mt-2 gap-1"
+  class="fixed top-0 z-10 mx-auto mt-2 flex w-full flex-col items-center gap-1"
 >
   <nav
     aria-label="Main"
-    class="relative z-20 flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
+    class="relative z-20 flex items-center justify-center rounded-full px-3 text-sm font-medium text-gray-600 dark:text-gray-200"
   >
     {
       navItems.map((link) => (
         <a
-          class="relative block px-2.5 py-2 rounded-full transition hover:text-blue-600 dark:hover:text-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:focus-visible:outline-blue-400 md:px-2"
+          class="relative block rounded-full px-2.5 py-2 transition hover:text-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 md:px-2 dark:hover:text-blue-400 dark:focus-visible:outline-blue-400"
           data-label={link.label}
           title={link.title}
           href={link.url}
@@ -78,11 +78,11 @@ const isHome = currentPath === "/"
     isHome && (
       <nav
         aria-label="Home sections"
-        class="flex px-3 text-xs font-medium rounded-full text-gray-500 dark:text-gray-400 justify-center items-center"
+        class="flex items-center justify-center rounded-full px-3 text-xs font-medium text-gray-500 dark:text-gray-400"
       >
         {homeSections.map((link) => (
           <a
-            class="relative block px-2.5 py-1.5 rounded-full transition hover:text-blue-600 dark:hover:text-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:focus-visible:outline-blue-400"
+            class="relative block rounded-full px-2.5 py-1.5 transition hover:text-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:hover:text-blue-400 dark:focus-visible:outline-blue-400"
             data-label={link.label}
             href={link.url}
           >
@@ -96,51 +96,53 @@ const isHome = currentPath === "/"
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const sections = document.querySelectorAll("section")
-    const navItems = document.querySelectorAll("header nav a")
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll("header nav a");
 
     const callback = (entries: any[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           navItems.forEach((item) => {
             if (item.getAttribute("data-label") == entry.target.id) {
-              item.classList.add("text-blue-600", "dark:text-blue-400")
-              item.setAttribute("aria-current", "true")
+              item.classList.add("text-blue-600", "dark:text-blue-400");
+              item.setAttribute("aria-current", "true");
             } else {
-              item.classList.remove("text-blue-600", "dark:text-blue-400")
+              item.classList.remove("text-blue-600", "dark:text-blue-400");
               if (item.getAttribute("aria-current") !== "page") {
-                item.removeAttribute("aria-current")
+                item.removeAttribute("aria-current");
               }
             }
-          })
+          });
         }
-      })
-    }
+      });
+    };
 
     const observer = new IntersectionObserver(callback, {
       root: null,
       rootMargin: "0px",
       threshold: 0.3,
-    })
+    });
 
     sections.forEach((section) => {
-      observer.observe(section)
-    })
+      observer.observe(section);
+    });
 
     // Cleanup function
     document.onvisibilitychange = () => {
       if (document.visibilityState === "hidden") {
-        observer.disconnect()
+        observer.disconnect();
       } else {
         sections.forEach((section) => {
-          observer.observe(section)
-        })
+          observer.observe(section);
+        });
       }
-    }
-  })
+    };
+  });
 </script>
 
 <style>
+  @reference "../styles/global.css";
+
   nav {
     animation: nav-shadown 1s linear both;
     animation-timeline: scroll();
@@ -148,15 +150,15 @@ const isHome = currentPath === "/"
   }
 
   nav {
-    @apply dark:bg-gray-800/90 bg-white/50;
+    @apply bg-white/50 dark:bg-gray-800/90;
   }
 
   @keyframes nav-shadown {
     0% {
-      @apply dark:bg-gray-800/0 bg-white/0;
+      @apply bg-white/0 dark:bg-gray-800/0;
     }
     to {
-      @apply shadow-lg ring-1 backdrop-blur ring-white/10;
+      @apply shadow-lg ring-1 ring-white/10 backdrop-blur;
     }
   }
 </style>

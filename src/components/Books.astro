@@ -1,13 +1,13 @@
 ---
-import { Image } from "astro:assets"
+import { Image } from "astro:assets";
 
 interface Book {
-  title: string
-  author: string
-  note: string
-  link?: string
+  title: string;
+  author: string;
+  note: string;
+  link?: string;
   /** Paths under /public, e.g. "/books/creative-act.webp". One image shows as a cover; several stack as a pack that fans out on hover. */
-  images?: string[]
+  images?: string[];
 }
 
 const BOOKS: Book[] = [
@@ -16,9 +16,11 @@ const BOOKS: Book[] = [
     author: "Brian Tracy",
     note: "Aprendí cómo nuestros pensamientos y creencias pueden influir en nuestras acciones y resultados.",
     link: "https://contrapunto.cl/products/si-lo-crees-lo-creas",
-    images: ["https://contrapunto.cl/cdn/shop/files/9789877256093.jpg?v=1737135781"],
+    images: [
+      "https://contrapunto.cl/cdn/shop/files/9789877256093.jpg?v=1737135781",
+    ],
   },
-]
+];
 ---
 
 <ul class="flex flex-col gap-14">
@@ -41,8 +43,10 @@ const BOOKS: Book[] = [
                 title
               )}
             </h3>
-            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{author}</p>
-            <p class="mt-3 max-w-prose text-pretty leading-relaxed text-gray-700 dark:text-gray-300">
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+              {author}
+            </p>
+            <p class="mt-3 max-w-prose leading-relaxed text-pretty text-gray-700 dark:text-gray-300">
               {note}
             </p>
           </div>
@@ -58,7 +62,7 @@ const BOOKS: Book[] = [
                   loading="lazy"
                   decoding="async"
                   class:list={[
-                    "aspect-[2/3] w-24 rounded-lg object-cover shadow-md ring-1 ring-black/20 bg-black/10 dark:bg-yellow-500/5 dark:ring-white/20 transition-all duration-300 md:w-28",
+                    "aspect-[2/3] w-24 rounded-lg bg-black/10 object-cover shadow-md ring-1 ring-black/20 transition-all duration-300 md:w-28 dark:bg-yellow-500/5 dark:ring-white/20",
                     i % 2 === 0 ? "rotate-2" : "-rotate-2",
                     i > 0 && "-ml-16 group-hover:-ml-4 md:-ml-20",
                   ]}

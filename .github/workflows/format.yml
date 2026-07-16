@@ -1,0 +1,32 @@
+# Fails CI if any file isn't formatted with Prettier. Read-only check —
+# it never writes changes back to the repo. Run `pnpm format` locally to fix.
+name: Format
+
+on:
+  push:
+    branches: [main] # run on every push to main
+  pull_request: # and on every PR targeting any branch
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      # Clone the repo at the triggering commit
+      - uses: actions/checkout@v4
+
+      # Install pnpm itself (must run before setup-node's pnpm cache step)
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10 # keep in sync with the pnpm version used locally
+
+      # Install Node and enable pnpm store caching between runs
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc # use the same Node version as local dev
+          cache: pnpm
+
+      # Install deps exactly as locked; fails if pnpm-lock.yaml is out of sync
+      - run: pnpm install --frozen-lockfile
+
+      # prettier --check . — exits non-zero if anything is unformatted
+      - run: pnpm format:check
